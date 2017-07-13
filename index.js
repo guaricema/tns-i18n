@@ -1,10 +1,10 @@
 require('globals');
-var application = require("application");
+
 var platformModule = require("platform");
 var strRender = require('str-render');
 
 module.exports = function (defaultLang) {
-
+  // go!
   var lang = platformModule.device.language;
   var defaults = require('~/i18n/' + defaultLang);
   var strings = {};
@@ -12,7 +12,7 @@ module.exports = function (defaultLang) {
     strings = require('~/i18n/' + lang);
   } catch (e) { }
 
-
+  // main function
   var _L = function (strName, ...replacers) {
     var res = '';
     if (strings.hasOwnProperty(strName))
@@ -22,6 +22,5 @@ module.exports = function (defaultLang) {
     return strRender(res, '%s', ...replacers);
   }
 
-  application.setResources(_L);
   global._L = _L;
 };

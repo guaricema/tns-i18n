@@ -1,14 +1,7 @@
 # tns-i18n
 This is a Nativescript plugin that implements i18n easily.
 
-It adds `_L` function to global variable and XML files so you can use it anywhere in the app.
-
-It is inspired by [nativescript-i18n](https://www.npmjs.com/package/nativescript-i18n), The only difference between them is that with this plugin **you don't need to rebuild the app with every change**, so you can continue watching the app smoothly.
-
-The module detects the preferred user language and displays text in this language if it is handled by the app, if not, it will load the text in the default language you chose.
-
-## Prefer Videos ?
-**Here is a short *[video tutorial](https://www.youtube.com/watch?v=u4gtn2j58dc)* on this plugin.**
+It adds `_L` function to global variable and XML files so you can use it anywhere in the app. The module detects the preferred user language and displays text in this language if it is handled by the app, if not, it will load the text in the default language you chose.
 
 # Installation
 ```
@@ -24,10 +17,13 @@ Import the module in **app.js** before anything else:
 > You have to mention the default language code
 
 ```javascript
-require('tns-i18n')('en'); // We set 'en' as default language
-var application = require("application");
+require("tns-i18n")("en");
+require("./bundle-config");
 
-application.start({ moduleName: "./home" });
+var application = require("application");
+application.setResources({ _L: _L });
+
+application.start({ moduleName: "home/home-page" });
 ```
 
 ## Creating locales
@@ -37,13 +33,7 @@ Now, create a **i18n** folder in **app** folder.
 app
 |___ i18n
     |___ en.js
-    |___ ar.js
-    .
-    .
-    .
-.
-.
-.
+    |___ ru.js
 ```
 
 ### Must export in files
@@ -62,7 +52,7 @@ module.exports = {
 ### XML
 In XML files:
 ```xml
-<Label text="{{_L('greetings')}}"></Label>
+<Label text="{{ _L('greetings') }}"></Label>
 ```
 
 ### JS
@@ -75,7 +65,7 @@ The module supports replacements of `%s`.
 
 Eg:
 ```xml
-<Label text="{{_L('greetings', 'My friend')}}"></Label>
+<Label text="{{ _L('greetings', 'My friend') }}"></Label>
 <!-- Will give: Hello My friend -->
 ```
 
