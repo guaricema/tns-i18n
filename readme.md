@@ -1,4 +1,4 @@
-# tns-i18n
+# Intro
 This is a Nativescript plugin that implements i18n easily.
 
 It adds `_L` function to global variable and XML files so you can use it anywhere in the app. The module detects the preferred user language and displays text in this language if it is handled by the app, if not, it will load the text in the default language you chose.
