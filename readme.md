@@ -5,7 +5,7 @@ It adds `_L` function to global variable and XML files so you can use it anywher
 
 # Installation
 ```
-tns plugin add tns-i18n
+tns plugin add https://github.com/guaricema/tns-i18n
 ```
 
 # Usage
